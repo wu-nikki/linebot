@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import linebot from 'linebot'
 import { scheduleJob } from 'node-schedule'
-import fetchAnime from './commands/fetchAnime.js'
+
 import fetchCourse from './commands/fetchCourse.js'
 import rateUpdate from './utils/rateUpdate.js'
 
@@ -23,8 +23,6 @@ bot.on('message', event => {
 
   if (event.message.text === '共通課程') {
     fetchCourse(event)
-  } else if (event.message.text.startsWith('查動畫 ')) {
-    fetchAnime(event)
   } else if (event.message.text.startsWith('查匯率')) {
     event.reply(USDTWD.toString())
   }

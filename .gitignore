@@ -1,3 +1,5 @@
 node_modules
 .env
-dump
+tt.js
+test.js
+package-lock

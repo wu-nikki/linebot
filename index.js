@@ -50,7 +50,7 @@ const init = async () => {
       out.img = animal.album_file
       out.size = animal.animal_bodytype === 'SMALL' ? '小型' : (animal.animal_bodytype === 'MEDIUM' ? '中型' : '大型')
       out.color = animal.animal_colour
-      out.variety = (animal.animal_Variety === '混種貓' || (animal.animal_Variety === '混種狗')) ? '米克斯' : animal.animal_Variety
+      out.variety = (animal.animal_Variety.includes('混種貓') || (animal.animal_Variety.includes('混種犬'))) ? '米克斯' : animal.animal_Variety.trim()
       out.gender = animal.animal_sex === 'M' ? '公' : (animal.animal_sex === 'F' ? '母' : '未輸入')
       out.kind = animal.animal_kind === '狗' ? '犬' : (animal.animal_kind === '貓' ? '貓' : '其他')
       // 此id為收容編號
@@ -108,7 +108,7 @@ init()
 //   //   out.img = animal.album_file
 //   //   out.size = animal.animal_bodytype === 'SMALL' ? '小型' : (animal.animal_bodytype === 'MEDIUM' ? '中型' : '大型')
 //   //   out.color = animal.animal_colour
-//   //   out.variety = (animal.animal_Variety === '混種貓' || (animal.animal_Variety === '混種狗')) ? '米克斯' : animal.animal_Variety
+//   //   out.variety = (animal.animal_Variety === '混種貓' || (animal.animal_Variety === '混種犬')) ? '米克斯' : animal.animal_Variety
 //   //   out.gender = animal.animal_sex === 'M' ? '公' : (animal.animal_sex === 'F' ? '母' : '未輸入')
 //   //   out.kind = animal.animal_kind === '狗' ? '犬' : (animal.animal_kind === '貓' ? '貓' : '其他')
 //   //   // 此id為收容編號
@@ -282,7 +282,7 @@ bot.on('message', async (e) => {
         out.img = animal.album_file
         out.size = animal.animal_bodytype === 'SMALL' ? '小型' : (animal.animal_bodytype === 'MEDIUM' ? '中型' : '大型')
         out.color = animal.animal_colour
-        out.variety = (animal.animal_Variety === '混種貓' || (animal.animal_Variety === '混種狗')) ? '米克斯' : animal.animal_Variety
+        out.variety = (animal.animal_Variety.includes('混種貓') || (animal.animal_Variety.includes('混種犬'))) ? '米克斯' : animal.animal_Variety.trim()
         out.gender = animal.animal_sex === 'M' ? '公' : (animal.animal_sex === 'F' ? '母' : '未輸入')
         out.kind = animal.animal_kind === '狗' ? '犬' : (animal.animal_kind === '貓' ? '貓' : '其他')
         // 此id為收容編號
@@ -360,7 +360,7 @@ bot.on('message', async (e) => {
           // out.hero.action.uri = web
           bubbles.push(out)
           // fs.writeFileSync('test.json', JSON.stringify(bubbles))
-          // console.log(bubbles)
+          console.log(bubbles)
           // console.log(write.length)
         } e.reply(([
           { type: 'text', text: `搜尋到${write.length}隻毛孩喔~` },
